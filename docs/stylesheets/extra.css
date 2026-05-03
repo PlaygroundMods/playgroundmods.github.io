@@ -158,12 +158,12 @@
   color: var(--md-accent-fg-color);
 }
 
-.md-typeset a[href*="modrinth.com"]:not(.pgm-social-icon),
-.md-typeset a[href*="curseforge.com"]:not(.pgm-social-icon),
-.md-typeset a[href*="github.com"]:not(.pgm-social-icon),
-.md-typeset a[href*="discord.gg"]:not(.pgm-social-icon),
-.md-typeset a[href*="discord.com"]:not(.pgm-social-icon),
-.md-typeset a[href*="playgroundmods.github.io"]:not(.pgm-social-icon) {
+.md-typeset a[href*="modrinth.com"]:not(.pgm-social-icon):not(.headerlink),
+.md-typeset a[href*="curseforge.com"]:not(.pgm-social-icon):not(.headerlink),
+.md-typeset a[href*="github.com"]:not(.pgm-social-icon):not(.headerlink),
+.md-typeset a[href*="discord.gg"]:not(.pgm-social-icon):not(.headerlink),
+.md-typeset a[href*="discord.com"]:not(.pgm-social-icon):not(.headerlink),
+.md-typeset a[href*="playgroundmods.github.io"]:not(.pgm-social-icon):not(.headerlink) {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
@@ -187,21 +187,21 @@
   color: inherit;
 }
 
-.md-typeset a[href*="modrinth.com"]:not(.pgm-social-icon):hover,
-.md-typeset a[href*="curseforge.com"]:not(.pgm-social-icon):hover,
-.md-typeset a[href*="github.com"]:not(.pgm-social-icon):hover,
-.md-typeset a[href*="discord.gg"]:not(.pgm-social-icon):hover,
-.md-typeset a[href*="discord.com"]:not(.pgm-social-icon):hover,
-.md-typeset a[href*="playgroundmods.github.io"]:not(.pgm-social-icon):hover {
+.md-typeset a[href*="modrinth.com"]:not(.pgm-social-icon):not(.headerlink):hover,
+.md-typeset a[href*="curseforge.com"]:not(.pgm-social-icon):not(.headerlink):hover,
+.md-typeset a[href*="github.com"]:not(.pgm-social-icon):not(.headerlink):hover,
+.md-typeset a[href*="discord.gg"]:not(.pgm-social-icon):not(.headerlink):hover,
+.md-typeset a[href*="discord.com"]:not(.pgm-social-icon):not(.headerlink):hover,
+.md-typeset a[href*="playgroundmods.github.io"]:not(.pgm-social-icon):not(.headerlink):hover {
   color: var(--md-accent-fg-color) !important;
 }
 
-.md-typeset a[href*="modrinth.com"]:not(.pgm-social-icon)::before,
-.md-typeset a[href*="curseforge.com"]:not(.pgm-social-icon)::before,
-.md-typeset a[href*="github.com"]:not(.pgm-social-icon)::before,
-.md-typeset a[href*="discord.gg"]:not(.pgm-social-icon)::before,
-.md-typeset a[href*="discord.com"]:not(.pgm-social-icon)::before,
-.md-typeset a[href*="playgroundmods.github.io"]:not(.pgm-social-icon)::before {
+.md-typeset a[href*="modrinth.com"]:not(.pgm-social-icon):not(.headerlink)::before,
+.md-typeset a[href*="curseforge.com"]:not(.pgm-social-icon):not(.headerlink)::before,
+.md-typeset a[href*="github.com"]:not(.pgm-social-icon):not(.headerlink)::before,
+.md-typeset a[href*="discord.gg"]:not(.pgm-social-icon):not(.headerlink)::before,
+.md-typeset a[href*="discord.com"]:not(.pgm-social-icon):not(.headerlink)::before,
+.md-typeset a[href*="playgroundmods.github.io"]:not(.pgm-social-icon):not(.headerlink)::before {
   content: "";
   display: inline-block;
   width: 16px;
@@ -235,8 +235,9 @@ a[href*="modrinth.com"]::before {
   mask-image: url("../assets/github.svg");
 }
 
-/* PlaygroundMods Icon */
-.md-typeset a[href*="playgroundmods.github.io"]:not(.pgm-social-icon)::before {
+/* PlaygroundMods Icon - Only for absolute links to organization or home */
+.md-typeset a[href^="https://playgroundmods.github.io"]:not(.pgm-social-icon):not(.headerlink)::before,
+.md-typeset a[href^="http://playgroundmods.github.io"]:not(.pgm-social-icon):not(.headerlink)::before {
   background-image: url("../assets/playground.png");
   border-radius: 4px;
 }
@@ -530,6 +531,8 @@ a[href*="modrinth.com"]::before {
   mask-repeat: no-repeat;
   -webkit-mask-size: contain;
   mask-size: contain;
+  background-image: none !important;
+  /* Fix for playground icon showing through */
 }
 
 .md-typeset a[href*="wiki/"]::before,
@@ -546,4 +549,5 @@ a[href*="modrinth.com"]::before {
   mask-repeat: no-repeat;
   -webkit-mask-size: contain;
   mask-size: contain;
+  background-image: none !important;
 }
