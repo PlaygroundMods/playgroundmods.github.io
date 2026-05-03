@@ -1,10 +1,10 @@
----
-title: License
+---title: License
 icon: lucide/scale
-updated: 2026-05-03T00:00:00Z
+updated: 2026-05-03T04:10:09Z
 authors:
   - playground
   - palm1
+date: 2026-05-03T04:10:09Z
 ---
 
 All projects distributed by the [**Playground Team**](https://playgroundmods.github.io/) under this license are subject to the following terms:
