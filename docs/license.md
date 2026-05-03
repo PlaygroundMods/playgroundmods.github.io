@@ -1,4 +1,5 @@
----title: License
+---
+title: License
 icon: lucide/scale
 updated: 2026-05-03T04:02:08Z
 authors:

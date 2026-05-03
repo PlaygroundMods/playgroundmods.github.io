@@ -1,4 +1,5 @@
----title: Playground Mods
+---
+title: Playground Mods
 icon: lucide/home
 updated: 2026-05-03T04:02:08Z
 authors:

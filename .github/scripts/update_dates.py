@@ -43,8 +43,9 @@ def update_file_dates(file_path):
 
     if modified:
         try:
+            clean_fm = frontmatter.strip()
             with open(file_path, 'w', encoding='utf-8', newline='') as f:
-                f.write(f"---{frontmatter}---{body}")
+                f.write(f"---\n{clean_fm}\n---{body}")
             return True
         except Exception as e:
             print(f"Error writing to {file_path}: {e}")
