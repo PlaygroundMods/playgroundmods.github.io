@@ -1,7 +1,7 @@
 ---
 title: License
 icon: lucide/scale
-updated: 2026-05-03T04:22:11Z
+updated: 2026-05-03T04:28:02Z
 authors:
   - playground
   - palm1
