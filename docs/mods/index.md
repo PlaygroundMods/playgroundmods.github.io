@@ -1,10 +1,9 @@
----
-title: Projects
+---title: Projects
 icon: lucide/briefcase
-date: 2026-05-03T04:06:22Z
-updated: 2026-05-03T04:06:22Z
+updated: 2026-05-03T04:02:08Z
 authors:
   - playground
+date: 2026-05-03T04:02:08Z
 ---
 
 Here you can find information and documentation for all of our mods!
