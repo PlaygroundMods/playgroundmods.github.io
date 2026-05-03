@@ -158,12 +158,13 @@
   color: var(--md-accent-fg-color);
 }
 
-.md-typeset a[href*="modrinth.com"]:not(.pgm-social-icon):not(.headerlink),
-.md-typeset a[href*="curseforge.com"]:not(.pgm-social-icon):not(.headerlink),
-.md-typeset a[href*="github.com"]:not(.pgm-social-icon):not(.headerlink),
-.md-typeset a[href*="discord.gg"]:not(.pgm-social-icon):not(.headerlink),
-.md-typeset a[href*="discord.com"]:not(.pgm-social-icon):not(.headerlink),
-.md-typeset a[href*="playgroundmods.github.io"]:not(.pgm-social-icon):not(.headerlink) {
+.md-typeset a[href*="modrinth.com"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link),
+.md-typeset a[href*="curseforge.com"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link),
+.md-typeset a[href*="github.com"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link),
+.md-typeset a[href*="discord.gg"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link),
+.md-typeset a[href*="discord.com"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link),
+.md-typeset a[href^="https://playgroundmods.github.io"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link),
+.md-typeset a[href^="http://playgroundmods.github.io"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link) {
   display: inline-flex;
   align-items: center;
   gap: 0.25rem;
@@ -177,31 +178,34 @@
   top: 3px;
 }
 
-.md-typeset a[href*="modrinth.com"]:not(.pgm-social-icon) strong,
-.md-typeset a[href*="curseforge.com"]:not(.pgm-social-icon) strong,
-.md-typeset a[href*="github.com"]:not(.pgm-social-icon) strong,
-.md-typeset a[href*="discord.gg"]:not(.pgm-social-icon) strong,
-.md-typeset a[href*="discord.com"]:not(.pgm-social-icon) strong,
-.md-typeset a[href*="playgroundmods.github.io"]:not(.pgm-social-icon) strong {
+.md-typeset a[href*="modrinth.com"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link) strong,
+.md-typeset a[href*="curseforge.com"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link) strong,
+.md-typeset a[href*="github.com"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link) strong,
+.md-typeset a[href*="discord.gg"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link) strong,
+.md-typeset a[href*="discord.com"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link) strong,
+.md-typeset a[href^="https://playgroundmods.github.io"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link) strong,
+.md-typeset a[href^="http://playgroundmods.github.io"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link) strong {
   font-weight: inherit;
   color: inherit;
 }
 
-.md-typeset a[href*="modrinth.com"]:not(.pgm-social-icon):not(.headerlink):hover,
-.md-typeset a[href*="curseforge.com"]:not(.pgm-social-icon):not(.headerlink):hover,
-.md-typeset a[href*="github.com"]:not(.pgm-social-icon):not(.headerlink):hover,
-.md-typeset a[href*="discord.gg"]:not(.pgm-social-icon):not(.headerlink):hover,
-.md-typeset a[href*="discord.com"]:not(.pgm-social-icon):not(.headerlink):hover,
-.md-typeset a[href*="playgroundmods.github.io"]:not(.pgm-social-icon):not(.headerlink):hover {
+.md-typeset a[href*="modrinth.com"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link):hover,
+.md-typeset a[href*="curseforge.com"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link):hover,
+.md-typeset a[href*="github.com"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link):hover,
+.md-typeset a[href*="discord.gg"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link):hover,
+.md-typeset a[href*="discord.com"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link):hover,
+.md-typeset a[href^="https://playgroundmods.github.io"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link):hover,
+.md-typeset a[href^="http://playgroundmods.github.io"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link):hover {
   color: var(--md-accent-fg-color) !important;
 }
 
-.md-typeset a[href*="modrinth.com"]:not(.pgm-social-icon):not(.headerlink)::before,
-.md-typeset a[href*="curseforge.com"]:not(.pgm-social-icon):not(.headerlink)::before,
-.md-typeset a[href*="github.com"]:not(.pgm-social-icon):not(.headerlink)::before,
-.md-typeset a[href*="discord.gg"]:not(.pgm-social-icon):not(.headerlink)::before,
-.md-typeset a[href*="discord.com"]:not(.pgm-social-icon):not(.headerlink)::before,
-.md-typeset a[href*="playgroundmods.github.io"]:not(.pgm-social-icon):not(.headerlink)::before {
+.md-typeset a[href*="modrinth.com"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link)::before,
+.md-typeset a[href*="curseforge.com"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link)::before,
+.md-typeset a[href*="github.com"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link)::before,
+.md-typeset a[href*="discord.gg"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link)::before,
+.md-typeset a[href*="discord.com"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link)::before,
+.md-typeset a[href^="https://playgroundmods.github.io"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link)::before,
+.md-typeset a[href^="http://playgroundmods.github.io"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link)::before {
   content: "";
   display: inline-block;
   width: 16px;
@@ -236,8 +240,8 @@ a[href*="modrinth.com"]::before {
 }
 
 /* PlaygroundMods Icon - Only for absolute links to organization or home */
-.md-typeset a[href^="https://playgroundmods.github.io"]:not(.pgm-social-icon):not(.headerlink)::before,
-.md-typeset a[href^="http://playgroundmods.github.io"]:not(.pgm-social-icon):not(.headerlink)::before {
+.md-typeset a[href^="https://playgroundmods.github.io"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link)::before,
+.md-typeset a[href^="http://playgroundmods.github.io"]:not(.pgm-social-icon):not(.headerlink):not(.pgm-clean-link)::before {
   background-image: url("../assets/playground.png");
   border-radius: 4px;
 }
