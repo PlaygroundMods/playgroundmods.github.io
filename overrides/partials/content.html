@@ -1,0 +1,250 @@
+{% include "partials/actions.html" %}
+
+{% if page.meta.title %}
+<h1 id="__skip">
+  {% if page.meta.thumbnail %}
+  <img src="{{ page.meta.thumbnail }}" class="pgm-title-thumbnail">
+  {% endif %}
+  {{ page.meta.title }}
+</h1>
+{% elif page.title and "<h1>" not in page.content and page.meta.layout | default("") != "team" %}
+  <h1 id="__skip">
+    {% if page.meta.thumbnail %}
+    <img src="{{ page.meta.thumbnail }}" class="pgm-title-thumbnail">
+    {% endif %}
+    {{ page.title }}
+  </h1>
+  {% endif %}
+
+
+  {% if page.meta.authors %}
+  <div class="pgm-blog-header-v4">
+    <div class="pgm-meta-dates" data-url="{{ page.url }}">
+      <span>Posted <strong class="pgm-date-posted" data-date="{{ page.meta.date | default('') }}">
+          {% if page.meta.date %}{{ page.meta.date }}{% else %}1 minute ago{% endif %}
+        </strong></span>
+      <span class="pgm-updated-container">
+        <span class="pgm-dot"> &bull; </span>
+        <span>Updated <strong class="pgm-date-updated"
+            data-date="{{ page.meta.updated | default(page.meta.date) | default('') }}">
+            {% if page.meta.updated or page.meta.date %}{{ page.meta.updated | default(page.meta.date) }}{% else %}1
+            minute ago{% endif %}
+          </strong></span>
+      </span>
+    </div>
+
+    <div class="pgm-authors-container">
+      <span class="pgm-written-text">Written By</span>
+      {% for author_key in page.meta.authors %}
+      {% set author_loop = loop %}
+      {% for member in config.extra.team_members %}
+      {% if member.username == author_key %}
+      {% if not author_loop.first %}<span class="pgm-author-sep">& </span>{% endif %}
+      <div class="pgm-author-chip">
+        <img src="{{ member.avatar }}" alt="{{ member.name }}" class="pgm-avatar-inline">
+        <strong class="pgm-author-name">{{ member.name }}</strong>
+        {% if member.socials %}
+        <div class="pgm-author-socials">
+          {% for platform in ["modrinth", "github", "discord", "bluesky"] %}
+          {% if platform in member.socials %}
+          <a href="{{ member.socials[platform] }}" target="_blank" rel="noopener" class="pgm-social-icon"
+            title="{{ platform | capitalize }}">
+            {% if platform == "github" %}{% include ".icons/fontawesome/brands/github.svg" %}
+            {% elif platform == "discord" %}{% include ".icons/fontawesome/brands/discord.svg" %}
+            {% elif platform == "bluesky" %}{% include ".icons/simple/bluesky.svg" %}
+            {% elif platform == "modrinth" %}{% include ".icons/simple/modrinth.svg" %}
+            {% else %}{{ platform | first | capitalize }}{% endif %}
+          </a>
+          {% endif %}
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+      {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const format = (str) => {
+        if (!str || ["None", "1 minute ago", ""].includes(str)) return "1 minute ago";
+        const date = new Date(str);
+        if (isNaN(date)) return str;
+
+        const diff = (new Date() - date) / 1000;
+        if (diff < 60) return `less than a minute ago`;
+        if (diff < 3600) return `${Math.floor(diff / 60)} minutes ago`;
+        if (diff < 86400) return `${Math.floor(diff / 3600)} hours ago`;
+        return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+      };
+
+      const updateAll = () => {
+        const container = document.querySelector('.pgm-meta-dates');
+        if (!container) return;
+
+        const [posted, updated] = [container.querySelector('.pgm-date-posted'), container.querySelector('.pgm-date-updated')];
+
+        if (posted && posted.dataset.date) {
+          posted.textContent = format(posted.dataset.date);
+          posted.title = new Date(posted.dataset.date).toLocaleString();
+        }
+        if (updated && updated.dataset.date) {
+          updated.textContent = format(updated.dataset.date);
+          updated.title = new Date(updated.dataset.date).toLocaleString();
+        }
+      };
+
+      updateAll();
+
+      setInterval(updateAll, 30000);
+    })();
+  </script>
+  {% endif %}
+
+  {# Version Selector #}
+  {% if page.meta.version_selector %}
+  <div class="pgm-version-banner">
+    <div class="pgm-version-info">
+      <span class="pgm-version-label">Select Version</span>
+      <div class="pgm-version-dropdown">
+        <button class="pgm-version-btn" id="pgm-version-selector-btn">
+          <span id="pgm-current-version">Loading...</span>
+          <span class="pgm-dropdown-arrow">&#x25BE;</span>
+        </button>
+        <div class="pgm-version-menu" id="pgm-version-menu">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (async function () {
+      const path = window.location.pathname;
+      const parts = path.split('/').filter(p => p);
+
+      let modId = null;
+      let currentVersion = null;
+      let currentPage = 'index.html';
+      let siteBase = "";
+
+      let modIndex = 0;
+      let versionIndex = 1;
+      let pathPrefix = "";
+
+      if (parts[0] === 'projects') {
+        modIndex = 1;
+        versionIndex = 2;
+        pathPrefix = "projects/";
+      }
+
+      if (parts.length >= (versionIndex + 1)) {
+        modId = parts[modIndex];
+        currentVersion = parts[versionIndex];
+        currentPage = parts.slice(versionIndex + 1).join('/') || 'index.html';
+
+        const displayVersion = document.getElementById('pgm-current-version');
+        if (displayVersion) displayVersion.textContent = currentVersion;
+
+        try {
+          const resp = await fetch(`/${pathPrefix}${modId}/versions.json`);
+          if (!resp.ok) return;
+          const versions = await resp.json();
+
+          if (!versions.some(v => v.mc === currentVersion)) return;
+
+          const menu = document.getElementById('pgm-version-menu');
+          if (menu) {
+            menu.innerHTML = versions.map(v => `
+            <a href="/${pathPrefix}${modId}/${v.mc}/${currentPage}" class="pgm-version-item ${v.mc === currentVersion ? 'is-active' : ''}">
+              ${v.mc}
+              ${v.mc === currentVersion ? '<span class="pgm-check-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>' : ''}
+            </a>
+          `).join('');
+          }
+
+          const btn = document.getElementById('pgm-version-selector-btn');
+          if (btn && menu) {
+            btn.onclick = (e) => {
+              e.stopPropagation();
+              menu.classList.toggle('is-visible');
+            };
+            document.onclick = () => menu.classList.remove('is-visible');
+          }
+
+          document.querySelectorAll('.md-nav__link').forEach(link => {
+            const href = link.getAttribute('href');
+            if (!href) return;
+
+            if (href.startsWith('http') || (href.startsWith('/') && !href.includes(`/${modId}/`))) return;
+
+            const modPathPattern = new RegExp(`(/${modId}/)(?!${currentVersion})([^/]+)(/|$)`);
+            if (modPathPattern.test(href)) {
+              const newHref = href.replace(modPathPattern, `$1${currentVersion}$3`);
+              link.setAttribute('href', newHref);
+            }
+          });
+        } catch (e) {
+          console.error('Failed to load versions:', e);
+        }
+      }
+    })();
+  </script>
+  {% endif %}
+
+  {% if page.meta.layout == "team" %}
+  <div class="pgm-team-grid">
+    {% for member in config.extra.team_members %}
+    <div class="pgm-member-card">
+      <img src="{{ member.avatar }}" alt="{{ member.name }}" class="pgm-member-avatar">
+      <div class="pgm-member-info">
+        <h3 class="pgm-member-name">{{ member.name }}</h3>
+        <span class="pgm-member-title">{{ member.title }}</span>
+        {% if member.socials %}
+        <div class="pgm-member-socials">
+          {% for platform in ["modrinth", "github", "discord", "bluesky"] %}
+          {% if platform in member.socials %}
+          <a href="{{ member.socials[platform] }}" target="_blank" rel="noopener" class="pgm-social-icon"
+            title="{{ platform | capitalize }}">
+            {% if platform == "github" %}{% include ".icons/fontawesome/brands/github.svg" %}
+            {% elif platform == "discord" %}{% include ".icons/fontawesome/brands/discord.svg" %}
+            {% elif platform == "bluesky" %}{% include ".icons/simple/bluesky.svg" %}
+            {% elif platform == "modrinth" %}{% include ".icons/simple/modrinth.svg" %}
+            {% else %}{{ platform | first | capitalize }}{% endif %}
+          </a>
+          {% endif %}
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {{ page.content }}
+  {% include "partials/tags.html" %}
+  {% include "partials/source-file.html" %}
+  {% include "partials/feedback.html" %}
+  {% include "partials/comments.html" %}
+  <script>
+    (function () {
+      function fixJavaHighlighting() {
+        document.querySelectorAll('.highlight .n').forEach(el => {
+          const text = el.textContent;
+          if (/^[A-Z][a-zA-Z0-9]*$/.test(text)) {
+            el.classList.remove('n');
+            el.classList.add('nc');
+          }
+        });
+      }
+
+      fixJavaHighlighting();
+      if (typeof document.addEventListener === 'function') {
+        document.addEventListener('DOMContentReady', fixJavaHighlighting);
+        const observer = new MutationObserver(fixJavaHighlighting);
+        observer.observe(document.body, { childList: true, subtree: true });
+      }
+    })();
+  </script>

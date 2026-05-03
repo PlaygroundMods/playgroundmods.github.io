@@ -1,0 +1,14 @@
+# Python
+.venv
+
+# Site
+site/
+
+# Cache
+.cache/
+temp_sync/
+.github/scripts/*_cache.json
+
+# Project Content
+docs/projects/
+

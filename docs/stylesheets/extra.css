@@ -1,0 +1,549 @@
+:root {
+  --md-primary-fg-color: #6200ee;
+  --md-accent-fg-color: #03dac6;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color: #1f2023;
+  --md-default-bg-color--light: #282a2e;
+}
+
+.md-typeset {
+  font-size: 0.7rem;
+}
+
+.pgm-blog-header-v4 {
+  margin-top: -1.2rem;
+  margin-bottom: 1.2rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--md-default-fg-color--lighter);
+  color: var(--md-default-fg-color--light);
+  font-size: 0.72rem;
+}
+
+.pgm-meta-dates {
+  margin-bottom: 0.1rem;
+  opacity: 0.8;
+}
+
+.pgm-date {
+  color: var(--md-default-fg-color);
+  font-weight: 600;
+}
+
+.pgm-authors-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.pgm-author-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.pgm-author-socials {
+  display: flex;
+  gap: 0.3rem;
+  margin-left: 0.05rem;
+}
+
+.pgm-social-icon {
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.6;
+  transition: opacity 0.2s, color 0.2s;
+  color: var(--md-default-fg-color);
+}
+
+.pgm-social-icon:hover {
+  opacity: 1;
+  color: var(--md-accent-fg-color);
+}
+
+.pgm-social-icon svg {
+  fill: currentColor;
+}
+
+.pgm-avatar-inline {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 0 0.05rem;
+  vertical-align: middle;
+}
+
+.pgm-author-name {
+  color: var(--md-default-fg-color);
+  font-weight: 700;
+}
+
+.pgm-author-sep {
+  opacity: 0.6;
+  margin: 0 0.1rem;
+}
+
+.pgm-written-text {
+  opacity: 0.8;
+}
+
+.pgm-updated-container {
+  display: inline;
+}
+
+.pgm-team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.pgm-member-card {
+  display: flex;
+  background: var(--md-default-bg-color--light);
+  padding: 1.2rem;
+  border-radius: 12px;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.pgm-member-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--md-accent-fg-color);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.pgm-member-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2px solid var(--md-accent-fg-color);
+}
+
+.pgm-member-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.pgm-member-name {
+  margin: 0 !important;
+  font-size: 1.1rem !important;
+  font-weight: 700 !important;
+}
+
+.pgm-member-title {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin-bottom: 0.5rem;
+}
+
+.pgm-member-socials {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.md-footer-social__link {
+  transition: transform 0.2s ease-in-out;
+}
+
+.md-footer-social__link:hover {
+  transform: scale(1.2);
+  color: var(--md-accent-fg-color);
+}
+
+.md-typeset a[href*="modrinth.com"]:not(.pgm-social-icon),
+.md-typeset a[href*="curseforge.com"]:not(.pgm-social-icon),
+.md-typeset a[href*="github.com"]:not(.pgm-social-icon),
+.md-typeset a[href*="discord.gg"]:not(.pgm-social-icon),
+.md-typeset a[href*="discord.com"]:not(.pgm-social-icon),
+.md-typeset a[href*="playgroundmods.github.io"]:not(.pgm-social-icon) {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  color: var(--md-default-fg-color) !important;
+  transition: color 0.2s;
+  padding: 0 0.15rem;
+  border-radius: 4px;
+  position: relative;
+  top: 3px;
+}
+
+.md-typeset a[href*="modrinth.com"]:not(.pgm-social-icon) strong,
+.md-typeset a[href*="curseforge.com"]:not(.pgm-social-icon) strong,
+.md-typeset a[href*="github.com"]:not(.pgm-social-icon) strong,
+.md-typeset a[href*="discord.gg"]:not(.pgm-social-icon) strong,
+.md-typeset a[href*="discord.com"]:not(.pgm-social-icon) strong,
+.md-typeset a[href*="playgroundmods.github.io"]:not(.pgm-social-icon) strong {
+  font-weight: inherit;
+  color: inherit;
+}
+
+.md-typeset a[href*="modrinth.com"]:not(.pgm-social-icon):hover,
+.md-typeset a[href*="curseforge.com"]:not(.pgm-social-icon):hover,
+.md-typeset a[href*="github.com"]:not(.pgm-social-icon):hover,
+.md-typeset a[href*="discord.gg"]:not(.pgm-social-icon):hover,
+.md-typeset a[href*="discord.com"]:not(.pgm-social-icon):hover,
+.md-typeset a[href*="playgroundmods.github.io"]:not(.pgm-social-icon):hover {
+  color: var(--md-accent-fg-color) !important;
+}
+
+.md-typeset a[href*="modrinth.com"]:not(.pgm-social-icon)::before,
+.md-typeset a[href*="curseforge.com"]:not(.pgm-social-icon)::before,
+.md-typeset a[href*="github.com"]:not(.pgm-social-icon)::before,
+.md-typeset a[href*="discord.gg"]:not(.pgm-social-icon)::before,
+.md-typeset a[href*="discord.com"]:not(.pgm-social-icon)::before,
+.md-typeset a[href*="playgroundmods.github.io"]:not(.pgm-social-icon)::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: -1px;
+}
+
+/* Discord Favicon */
+.md-typeset a[href*="discord.gg"]:not(.pgm-social-icon)::before,
+.md-typeset a[href*="discord.com"]:not(.pgm-social-icon)::before {
+  background-image: url("https://www.google.com/s2/favicons?domain=discord.com");
+}
+
+/* Modrinth Favicon */
+a[href*="modrinth.com"]::before {
+  background-image: url("https://modrinth.com/favicon.ico");
+}
+
+/* CurseForge Favicon */
+.md-typeset a[href*="curseforge.com"]:not(.pgm-social-icon)::before {
+  background-image: url("https://www.curseforge.com/favicon.ico");
+}
+
+/* GitHub Icon */
+.md-typeset a[href*="github.com"]:not(.pgm-social-icon)::before {
+  background-color: currentColor;
+  -webkit-mask-image: url("../assets/github.svg");
+  mask-image: url("../assets/github.svg");
+}
+
+/* PlaygroundMods Icon */
+.md-typeset a[href*="playgroundmods.github.io"]:not(.pgm-social-icon)::before {
+  background-image: url("../assets/playground.png");
+  border-radius: 4px;
+}
+
+.md-typeset table:not([class]) {
+  display: table;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--md-default-fg-color--lighter);
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--md-default-bg-color--light);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.md-logo img {
+  height: 1.6rem !important;
+  width: auto !important;
+  transform: scale(1.2);
+}
+
+[data-md-component="logo"] {
+  margin-right: 0.1rem !important;
+}
+
+.md-header__title {
+  margin-left: 0 !important;
+}
+
+.pgm-version-banner {
+  background: var(--md-default-bg-color--light);
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 6px;
+  padding: 0.3rem 0.8rem;
+  margin-top: -0.2rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pgm-version-info {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.pgm-version-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  font-weight: 700;
+  opacity: 0.6;
+}
+
+.pgm-version-dropdown {
+  position: relative;
+}
+
+.pgm-version-btn {
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 4px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--md-default-fg-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.pgm-version-btn:hover {
+  border-color: var(--md-accent-fg-color);
+}
+
+.pgm-dropdown-arrow {
+  font-size: 0.6rem;
+  opacity: 0.6;
+  margin-left: 0.2rem;
+}
+
+.pgm-version-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 140px;
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  display: none;
+  overflow: hidden;
+}
+
+.pgm-version-menu.is-visible {
+  display: block;
+  animation: pgm-fade-in 0.2s ease-out;
+}
+
+@keyframes pgm-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pgm-version-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.75rem;
+  color: var(--md-default-fg-color);
+  text-decoration: none !important;
+  transition: background 0.2s;
+}
+
+.pgm-version-item:hover {
+  background: var(--md-default-bg-color--light);
+  color: var(--md-accent-fg-color) !important;
+}
+
+.pgm-version-item.is-active {
+  font-weight: 700;
+  color: var(--md-accent-fg-color) !important;
+  background: var(--md-default-bg-color--light);
+}
+
+.pgm-check-icon {
+  width: 14px;
+  height: 14px;
+  color: var(--md-accent-fg-color);
+  display: flex;
+  align-items: center;
+}
+
+.pgm-check-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.md-nav__link--active {
+  font-weight: 700;
+}
+
+.md-typeset h2 a.pgm-clean-link {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+.md-typeset h2 a.pgm-clean-link:hover {
+  color: var(--md-accent-fg-color) !important;
+}
+
+[data-md-color-scheme="slate"] .highlight {
+  background-color: #282c34 !important;
+}
+
+.md-typeset .highlight code {
+  color: #abb2bf;
+}
+
+.md-typeset .highlight .k,
+.md-typeset .highlight .kd,
+.md-typeset .highlight .kn,
+.md-typeset .highlight .kp,
+.md-typeset .highlight .kr,
+.md-typeset .highlight .ow {
+  color: #c678dd;
+}
+
+.md-typeset .highlight .nf,
+.md-typeset .highlight .na,
+.md-typeset .highlight .nb {
+  color: #61afef;
+}
+
+.md-typeset .highlight .s,
+.md-typeset .highlight .s1,
+.md-typeset .highlight .s2,
+.md-typeset .highlight .sc {
+  color: #98c379;
+}
+
+.md-typeset .highlight .kt,
+.md-typeset .highlight .nc,
+.md-typeset .highlight .nn {
+  color: #e5c07b !important;
+}
+
+.md-typeset .highlight .m,
+.md-typeset .highlight .mi,
+.md-typeset .highlight .mf,
+.md-typeset .highlight .mo {
+  color: #d19a66;
+}
+
+.md-typeset .highlight .c1,
+.md-typeset .highlight .cm {
+  color: #5c6370;
+  font-style: italic;
+}
+
+.md-typeset .highlight .p {
+  color: #abb2bf;
+}
+
+.md-typeset .highlight .n {
+  color: #e06c75;
+}
+
+.md-typeset .highlight {
+  border-radius: 8px;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.md-typeset pre code {
+  padding: 1rem !important;
+}
+
+.pgm-title-thumbnail {
+  width: 48px;
+  height: 48px;
+  vertical-align: middle;
+  margin-right: 12px;
+  border-radius: 8px;
+  display: inline-block;
+  position: relative;
+  top: -2px;
+}
+
+.md-typeset h1 {
+  display: flex;
+  align-items: center;
+}
+
+.md-typeset a[href*="api/"]:not(.pgm-social-icon),
+.md-typeset a[href*="api.md"]:not(.pgm-social-icon),
+.md-typeset a.pgm-doc-link,
+.md-typeset a[href*="wiki/"]:not(.pgm-social-icon),
+.md-typeset a[href*="wiki.md"]:not(.pgm-social-icon),
+.md-typeset a.pgm-wiki-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-weight: 700;
+  text-decoration: none !important;
+  color: var(--md-default-fg-color) !important;
+  transition: color 0.2s;
+  padding: 0 0.15rem;
+  border-radius: 4px;
+  position: relative;
+  top: 3px;
+}
+
+.md-typeset a[href*="api/"]:hover,
+.md-typeset a[href*="api.md"]:hover,
+.md-typeset a.pgm-doc-link:hover,
+.md-typeset a[href*="wiki/"]:hover,
+.md-typeset a[href*="wiki.md"]:hover,
+.md-typeset a.pgm-wiki-link:hover {
+  color: var(--md-accent-fg-color) !important;
+}
+
+.md-typeset a[href*="api/"]::before,
+.md-typeset a[href*="api.md"]::before,
+.md-typeset a.pgm-doc-link::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-color: currentColor;
+  -webkit-mask-image: url("https://api.iconify.design/lucide:code.svg");
+  mask-image: url("https://api.iconify.design/lucide:code.svg");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+
+.md-typeset a[href*="wiki/"]::before,
+.md-typeset a[href*="wiki.md"]::before,
+.md-typeset a.pgm-wiki-link::before {
+  content: "";
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-color: currentColor;
+  -webkit-mask-image: url("https://api.iconify.design/lucide:book-open.svg");
+  mask-image: url("https://api.iconify.design/lucide:book-open.svg");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}

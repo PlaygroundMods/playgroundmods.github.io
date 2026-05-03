@@ -1,0 +1,17 @@
+mods:
+  - id: "wayfarer"
+    name: "Wayfarer"
+    icon: "/26.1.x/common/src/main/resources/wayfarer.png"
+    modrinth: "https://modrinth.com/mod/wayfarerlib"
+    github: "https://github.com/palmmc/Wayfarer"
+    versions:
+      - mc: "26.1.x"
+        branch: "26.1.x"
+  - id: "analog-audio"
+    name: "Analog Audio"
+    icon: "/1.21.1/src/main/resources/icon.png"
+    modrinth: "https://modrinth.com/mod/analog-audio"
+    github: "https://github.com/palmmc/AnalogAudio"
+    versions:
+      - mc: "1.21.1"
+        branch: "1.21.1"

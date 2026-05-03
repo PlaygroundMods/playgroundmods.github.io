@@ -1,0 +1,84 @@
+[project]
+site_name = "Playground Mods"
+site_description = "The home of Playground Mods, home to some cool Minecraft: Java Edition mods."
+site_author = "Playground Team"
+site_url = "https://playgroundmods.github.io/"
+copyright = "Copyright &copy; 2026 PlaygroundMods"
+
+# Repository Link
+repo_url = "https://github.com/PlaygroundMods"
+repo_name = "PlaygroundMods"
+
+# Navigation
+nav = [
+    { "Home" = "index.md" },
+    { "Team" = "team.md" },
+    { "License" = "license.md" },
+    { "Projects" = [
+        "mods/index.md",
+        { "Wayfarer" = [
+            { "Wayfarer" = "projects/wayfarer/26.1.x/index.md" },
+            { "Documentation" = [
+                { "Documentation" = "projects/wayfarer/26.1.x/api/index.md" },
+                { "API Reference" = "projects/wayfarer/26.1.x/api/reference.md" },
+                { "Examples" = "projects/wayfarer/26.1.x/api/examples.md" },
+            ] },
+        ] },
+        { "Analog Audio" = [
+            { "Analog Audio" = "projects/analog-audio/1.21.1/index.md" },
+        ] },
+    ] },
+]
+
+# Extra CSS
+extra_css = ["stylesheets/extra.css"]
+
+[project.theme]
+variant = "modern"
+language = "en"
+logo = "assets/playground.png"
+favicon = "assets/playground.png"
+custom_dir = "overrides"
+features = [
+    "announce.dismiss",
+    "content.code.annotate",
+    "content.code.copy",
+    "content.code.select",
+    "content.footnote.tooltips",
+    "content.tabs.link",
+    "content.tooltips",
+    "navigation.footer",
+    "navigation.indexes",
+    "navigation.instant",
+    "navigation.instant.prefetch",
+    "navigation.path",
+    "navigation.sections",
+    "navigation.top",
+    "navigation.tracking",
+    "search.highlight"
+]
+
+[[project.theme.palette]]
+scheme = "slate"
+toggle.icon = "lucide/moon"
+toggle.name = "Switch to light mode"
+
+[[project.theme.palette]]
+scheme = "default"
+toggle.icon = "lucide/sun"
+toggle.name = "Switch to dark mode"
+
+# Team Members
+[[project.extra.team_members]]
+username = "palm1"
+name = "Palm"
+avatar = "https://github.com/palmmc.png"
+title = "Developer"
+socials = { modrinth = "https://modrinth.com/user/palm1", github = "https://github.com/palmmc", discord = "https://discord.com/users/358729136333783040"}
+
+[[project.extra.team_members]]
+username = "playground"
+name = "Playground Team"
+avatar = "https://github.com/PlaygroundMods.png"
+title = "Organization"
+socials = { modrinth = "https://modrinth.com/organization/playgroundmods", github = "https://github.com/PlaygroundMods", discord = "https://discord.gg/Fuuxaq6KPh"}
