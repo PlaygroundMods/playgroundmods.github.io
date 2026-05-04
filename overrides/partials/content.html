@@ -103,7 +103,7 @@
   </script>
   {% endif %}
 
-  {# Version Selector #}
+  {# Version Selector UI (only on pages with version_selector: true) #}
   {% if page.meta.version_selector %}
   <div class="pgm-version-banner">
     <div class="pgm-version-info">
@@ -127,7 +127,6 @@
       let modId = null;
       let currentVersion = null;
       let currentPage = 'index.html';
-      let siteBase = "";
 
       let modIndex = 0;
       let versionIndex = 1;
@@ -172,26 +171,56 @@
             };
             document.onclick = () => menu.classList.remove('is-visible');
           }
-
-          document.querySelectorAll('.md-nav__link').forEach(link => {
-            const href = link.getAttribute('href');
-            if (!href) return;
-
-            if (href.startsWith('http') || (href.startsWith('/') && !href.includes(`/${modId}/`))) return;
-
-            const modPathPattern = new RegExp(`(/${modId}/)(?!${currentVersion})([^/]+)(/|$)`);
-            if (modPathPattern.test(href)) {
-              const newHref = href.replace(modPathPattern, `$1${currentVersion}$3`);
-              link.setAttribute('href', newHref);
-            }
-          });
         } catch (e) {
-          console.error('Failed to load versions:', e);
+          console.error('Failed to load version selector:', e);
         }
       }
     })();
   </script>
   {% endif %}
+
+  <script>
+    (async function () {
+      const path = window.location.pathname;
+      const parts = path.split('/').filter(p => p);
+
+      let modIndex = 0;
+      let versionIndex = 1;
+      let pathPrefix = "";
+
+      if (parts[0] === 'projects') {
+        modIndex = 1;
+        versionIndex = 2;
+        pathPrefix = "projects/";
+      }
+
+      if (parts.length >= (versionIndex + 1)) {
+        const modId = parts[modIndex];
+        const currentVersion = parts[versionIndex];
+
+        try {
+          const resp = await fetch(`/${pathPrefix}${modId}/versions.json`);
+          if (!resp.ok) return;
+          const versions = await resp.json();
+
+          if (!versions.some(v => v.mc === currentVersion)) return;
+
+          document.querySelectorAll('.md-nav__link').forEach(link => {
+            if (link.tagName !== 'A' || !link.href || link.origin !== window.location.origin) return;
+
+            const pathname = link.pathname;
+            const modPathPattern = new RegExp(`(/${modId}/)(?!${currentVersion})([^/]+)(/|$)`);
+            if (modPathPattern.test(pathname)) {
+              const newPathname = pathname.replace(modPathPattern, `$1${currentVersion}$3`);
+              link.href = newPathname + link.search + link.hash;
+            }
+          });
+        } catch (e) {
+          // Not a versioned page, silently ignore
+        }
+      }
+    })();
+  </script>
 
   {% if page.meta.layout == "team" %}
   <div class="pgm-team-grid">

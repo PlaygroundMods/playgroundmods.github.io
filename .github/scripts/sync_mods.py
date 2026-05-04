@@ -418,12 +418,7 @@ def main():
                                     else:
                                         processed_content = re.sub(r'^---', f'---\nthumbnail: "{github_icon_url}"', processed_content, count=1)
                                     thumbnail_url = github_icon_url
-                                
-                                if mod_name != "Wayfarer":
-                                    processed_content = re.sub(r'title:\s*["\']?Wayfarer["\']?', f'title: "{mod_name}"', processed_content)
-                                    processed_content = processed_content.replace('Wayfarer project portal', f'{mod_name} project portal')
-                                    processed_content = processed_content.replace('use Wayfarer\'s features', f'use {mod_name}\'s features')
-                                    processed_content = processed_content.replace('for players using Wayfarer', f'for players using {mod_name}')
+                            
 
                                 if not thumbnail_url:
                                     thumb_match = re.search(r'thumbnail:\s*["\']?([^"\']+)["\']?', processed_content)
