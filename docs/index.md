@@ -1,7 +1,7 @@
 ---
 title: Playground Mods
 icon: lucide/home
-updated: 2026-05-03T04:33:26Z
+updated: 2026-05-04T20:59:25Z
 authors:
   - playground
   - palm1
